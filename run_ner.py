@@ -1,4 +1,5 @@
 import analyzer_pkg.text_analyzer
+import sys
 
 def run_ner (string):
 
@@ -14,6 +15,4 @@ def run_ner (string):
 		language_data['magic_bullet_grammar']
 	)
 
-	return {'treatement': result[0], 'disease': result[1]}
-
-print(run_ner('A new medicine for heart disease'))
+	return {'treatment': result[0], 'disease': result[1]}
