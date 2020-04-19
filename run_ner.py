@@ -1,5 +1,4 @@
 import analyzer_pkg.text_analyzer
-import sys
 
 def run_ner (string):
 
