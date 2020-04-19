@@ -145,7 +145,7 @@ def magic_bullet_analyzer(message, start_word, magic_bullet_grammar, stop_words)
             output.append(start_word)
             output.append(matching_pattern)
         else:
-            output.append(None)
+            output.append('<empty>')
             output.append(start_word)
             output.append(matching_pattern)
     
@@ -170,7 +170,7 @@ def magic_bullet_analyzer(message, start_word, magic_bullet_grammar, stop_words)
                     np_fits = True
                     break
         if np_fits is False:
-            output.append(None)
+            output.append('<empty>')
             output.append(start_word)
             output.append(matching_pattern)
 
@@ -195,12 +195,12 @@ def magic_bullet_analyzer(message, start_word, magic_bullet_grammar, stop_words)
                     np_fits = True
                     break
         if np_fits is False:
-            output.append(None)
+            output.append('<empty>')
             output.append(start_word)
             output.append(matching_pattern)
 
     else:
-        output.append(None)
+        output.append('<empty>')
         output.append(start_word)
         output.append('<no pattern found>')
     
