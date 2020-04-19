@@ -2,17 +2,25 @@
 
 Disease-Treatment NER is a Named Entity Recognition algorithm to extract named diseases and treatments from sentence-like text.
 
-For example, in a sentence like
+For this sentence
 
 > Favipiravir to treat COVID-19
 
-You will get the following output 
+NER will return the following
 
 ```python
 {'treatement': 'Favipiravir', 'disease': 'COVID-19'}
 ```
 
+Both entities must be semantically related to be well labeled as _treatment_ and _disease_; otherwise, NER will return ```empty```. Consider the following
 
+> Favipiravir can't treat COVID-19
+
+The result will then be
+
+```python
+{'treatement': '<empty>', 'disease': 'COVID-19'}
+```
 
 ## Installation
 
@@ -42,21 +50,6 @@ Disease: COVID-19
 
 ## Performance
 
-The precision score for treatment mention retrieval is **0.83** and **0.97** for disease mentions. The algorithm performs differently deppending on the text source or style. We have used Twitter and PubMed as text sources for training and testing it. You check a [detailed report](https://datastudio.google.com/embed/u/0/reporting/17i3EjWTInDBFbFK1ruNQyvw-ijbxFXk1/page/9zcN) on precision scores, and the [test cases](https://datastudio.google.com/embed/u/0/reporting/17i3EjWTInDBFbFK1ruNQyvw-ijbxFXk1/page/iN0W) we have used.
+The precision score for _treatment_ entity recognition is **0.83** and **0.97** for _disease_. The algorithm performs differently deppending on the text source. We have used Twitter (tweets from healthcare professionals) and PubMed (research paper titles) as text sources for training and testing.
 
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-
-## License
-Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
-
-This work is licensed under a [Creative Commons Attribution 4.0 International
-License][cc-by].
-
-[![CC BY 4.0][cc-by-image]][cc-by]
-
-[cc-by]: http://creativecommons.org/licenses/by/4.0/
-[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+You check a [detailed report](https://datastudio.google.com/embed/u/0/reporting/17i3EjWTInDBFbFK1ruNQyvw-ijbxFXk1/page/9zcN) on precision scores, and the [test cases](https://datastudio.google.com/embed/u/0/reporting/17i3EjWTInDBFbFK1ruNQyvw-ijbxFXk1/page/iN0W) used for testing this algorithms.

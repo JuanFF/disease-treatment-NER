@@ -313,7 +313,7 @@ def analyzer(message, start_words, grammar, counter_grammar, stop_words, magic_b
     output = []
     A list with 3 elements, where:
     output[0]
-        is the solution found, a unicode string or '<nothing_found>'
+        is the solution found, a unicode string or '<empty>'
     output[1]
         is the problem found, a unicode string or '<no start_word>'
     output[2]
@@ -358,12 +358,12 @@ def analyzer(message, start_words, grammar, counter_grammar, stop_words, magic_b
             
             # 2.2) Try first 'magic bullet' rules:
             magic_bullet_analyzer_result = analyzer_pkg.magic_bullet_analyzer.magic_bullet_analyzer(no_splitted_message, start_word, magic_bullet_grammar, stop_words)
-            if magic_bullet_analyzer_result[0] != '<nothing_found>':
+            if magic_bullet_analyzer_result[0] != '<empty>':
                 output.append(magic_bullet_analyzer_result[0])
                 output.append(magic_bullet_analyzer_result[1])
                 output.append(magic_bullet_analyzer_result[2])
                 if check_if_problem_in_solution(output[0], output[1]):
-                    output[0] = '<nothing_found>'
+                    output[0] = '<empty>'
                 return output
             else:
 
@@ -402,7 +402,7 @@ def analyzer(message, start_words, grammar, counter_grammar, stop_words, magic_b
                                 output.append(start_word)
                                 output.append(matching_pattern)
                                 if check_if_problem_in_solution(output[0], output[1]):
-                                    output[0] = '<nothing_found>'
+                                    output[0] = '<empty>'
                                 return output
                         
                     # Second possible structure: SOLUTION after PROBLEM:
@@ -417,20 +417,20 @@ def analyzer(message, start_words, grammar, counter_grammar, stop_words, magic_b
                                 output.append(start_word)
                                 output.append(matching_pattern)
                                 if check_if_problem_in_solution(output[0], output[1]):
-                                    output[0] = '<nothing_found>'
+                                    output[0] = '<empty>'
                                 return output
                     
                     # This returns matching rules without [s] or [p], neither
                     # they're magic bullets. So, they are possibly mispelled:
                     else:
-                        output.append('<nothing_found>')
+                        output.append('<empty>')
                         output.append(start_word)
                         output.append('This rule may be erroneous: ' + matching_pattern)
                         return output
 
     # Get no results if no solution or start word is found
     if len(output) == 0:
-        output.append('<nothing_found>')
+        output.append('<empty>')
         output.append(start_word)
         # Append this to output if a pattern was found in magic_bullet_analyzer(),
         # but any noun phrase wasn't found:
