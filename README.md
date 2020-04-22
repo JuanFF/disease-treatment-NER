@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 Use ```run_ner.py``` to call the function that receives a text string as input and returns a dict with the result of the NER analysis on your string.
 
-If you want to test a single sentence, use ```test_sentence.py``` from the console with a string in quotes as argument:
+If you want to test a single sentence, use ```test_sentence.py``` from the console with a string in quotation marks argument:
 
 ```
 test_sentence.py "Favipiravir to treat COVID-19"
